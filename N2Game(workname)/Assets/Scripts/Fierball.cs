@@ -12,6 +12,7 @@ public class Fierball : MonoBehaviour {
 
 	void Update () {
 		transform.Translate (0, 0, speed * Time.deltaTime);
+		Invoke("NotDestroyed",2);
 	}
 
 	void OnTriggerEnter(Collider other){
@@ -19,6 +20,11 @@ public class Fierball : MonoBehaviour {
 			if(target != null){
 			target.ReactToHit();
 		}
+
 		Destroy (this.gameObject);
+	}
+
+	void NotDestroyed (){
+		Destroy (this.gameObject, 2);
 	}
 }
