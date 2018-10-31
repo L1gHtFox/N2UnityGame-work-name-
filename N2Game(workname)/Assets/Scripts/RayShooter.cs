@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RayShooter : MonoBehaviour {
 	private Camera _camera;
-	[SerializeField] private GameObject FierballPrefab;
-	private GameObject _fierball;
+	[SerializeField] private GameObject CrystalPrefab;
+	private GameObject _crystal;
 
 	void Start () {
 		_camera = GetComponent<Camera> ();
@@ -24,20 +24,11 @@ public class RayShooter : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			Vector3 point = new Vector3 (_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
-			Ray ray = _camera.ScreenPointToRay (point);
-			RaycastHit hit;
-			if (Physics.SphereCast (ray, 0.01f, out hit)) {
-				GameObject hitObject = hit.transform.gameObject;
-				ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
-				if (target != null) {
-					target.ReactToHit();
-				}
-					if (_fierball == null) {
-						_fierball = Instantiate (FierballPrefab) as GameObject;
-						_fierball.transform.position = transform.TransformPoint (Vector3.forward * 1.5f);
-						_fierball.transform.rotation = transform.rotation;
+					if (_crystal == null) {
+						_crystal = Instantiate (CrystalPrefab) as GameObject;
+						_crystal.transform.position = transform.TransformPoint (Vector3.forward * 1.5f);
+						_crystal.transform.rotation = transform.rotation;
 					}
 				}
 		}
-	}
 }

@@ -15,9 +15,9 @@ public class Fierball : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		PlayerCharacter player = other.GetComponent<PlayerCharacter> ();
-		if (player != null) {
-			player.Hurt (damage);
+		ReactiveTarget target = other.GetComponent<ReactiveTarget> ();
+			if(target != null){
+			target.ReactToHit();
 		}
 		Destroy (this.gameObject);
 	}

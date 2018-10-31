@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerCharacter : MonoBehaviour {
+public class PlayerUI : MonoBehaviour {
 	public float _health;
 	public float _N2;
 	public bool _HaveN2 = true;
