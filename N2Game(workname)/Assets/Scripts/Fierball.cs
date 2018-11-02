@@ -20,8 +20,11 @@ public class Fierball : MonoBehaviour {
 			if(target != null){
 			target.ReactToHit();
 		}
+			
+		if (other.tag != "N2wall") {
+			Destroy (this.gameObject);
+		}
 
-		Destroy (this.gameObject);
 	}
 
 	void NotDestroyed (){

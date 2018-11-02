@@ -25,17 +25,43 @@ public class Inventory : MonoBehaviour {
 			RaycastHit hit;
 			if(Physics.Raycast(ray,out hit,2f)){
 				if (hit.collider.GetComponent<Item>()){
-					for(int i = 0;i < item.Count;i++){
-						if(item[i].id==0){
-							item[i] = hit.collider.GetComponent<Item>();
-							DisplayItems ();
-							Destroy(hit.collider.GetComponent<Item>().gameObject);
-							break;
-						}
+					AddItem(hit.collider.GetComponent<Item>());
 					}
 				}
 			}
 		}
+
+	void AddItem(Item currentItem){
+		if(currentItem.isStackable==true){
+			AddStackableItem (currentItem);
+		}else{
+			AddUnstackableItem(currentItem);
+		}
+	}
+
+
+	void AddUnstackableItem(Item currentItem){
+		for(int i = 0;i < item.Count;i++){
+			if(item[i].id==0){
+				item [i] = currentItem;
+				item [i].countItem = 1;
+				DisplayItems ();
+				Destroy(currentItem.gameObject);
+				break;
+			}
+		}
+	}
+
+	void AddStackableItem(Item currentItem){
+		for (int i = 0; i < item.Count; i++){
+			if(item[i].id == currentItem.id){
+				item [i].countItem++;
+				DisplayItems ();
+				Destroy (currentItem.gameObject);
+				return;
+			}
+		}
+		AddUnstackableItem (currentItem);
 	}
 
 	void ToggleInventory (){
@@ -52,13 +78,23 @@ public class Inventory : MonoBehaviour {
 		for (int i = 0; i < item.Count; i++) {
 			Transform cell = cellContainer.transform.GetChild (i);
 			Transform icon = cell.GetChild (0);
+			Transform count = icon.GetChild (0);
+
+			Text txt = count.GetComponent<Text> ();
 			Image img = icon.GetComponent<Image> ();
+
 			if (item [i].id != 0) {
 				img.enabled = true;
 				img.sprite = Resources.Load<Sprite> (item [i].pathIcon);
+
+				if (item [i].countItem > 1) {
+					txt.text = item [i].countItem.ToString ();
+				}
+
 			} else {
 				img.enabled = false;
 				img.sprite = null;
+				txt.text = null;
 			}
 		}
 	}

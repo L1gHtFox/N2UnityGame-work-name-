@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 33453443209748872}
   - component: {fileID: 114196924762103978}
   - component: {fileID: 64576912166936846}
-  - component: {fileID: 114223409976888620}
+  - component: {fileID: 114404762713044650}
   - component: {fileID: 54057075197937132}
   m_Layer: 0
   m_Name: Crystal
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!114 &114223409976888620
+--- !u!114 &114404762713044650
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
