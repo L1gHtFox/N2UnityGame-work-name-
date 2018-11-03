@@ -101,7 +101,7 @@ MonoBehaviour:
   isStackable: 1
   descriptionItem: Just a cube
   pathIcon: Icons/128px/UI_Icon_Gift
-  pathPrefab: 
+  pathPrefab: Prefubs/Items/Cube
 --- !u!224 &224568156911154128
 RectTransform:
   m_ObjectHideFlags: 1

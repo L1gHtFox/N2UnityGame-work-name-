@@ -102,7 +102,7 @@ MonoBehaviour:
   isStackable: 0
   descriptionItem: Just a sphere
   pathIcon: Icons/128px/UI_Icon_BtnPsCircleRound
-  pathPrefab: 
+  pathPrefab: Prefubs/Items/Sphere
 --- !u!135 &135918266761938134
 SphereCollider:
   m_ObjectHideFlags: 1
