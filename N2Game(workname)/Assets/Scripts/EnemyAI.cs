@@ -6,11 +6,13 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour {
 	public GameObject playerCharecter;
 	public float dist;
+	public float attackRadius;
 	NavMeshAgent nav;
 	public float radius = 10;
 
 	void Start () {
 		nav = GetComponent<NavMeshAgent> ();
+		playerCharecter = GameObject.FindWithTag ("Player");
 	}
 
 	void Update () {
@@ -23,6 +25,10 @@ public class EnemyAI : MonoBehaviour {
 			nav.enabled = true;
 			nav.SetDestination (playerCharecter.transform.position);
 			gameObject.GetComponent<Animator> ().SetTrigger ("Walk");
+		}
+		if (dist < attackRadius) {
+			nav.enabled = false;
+			gameObject.GetComponent<Animator> ().SetTrigger ("Attack");
 		}
 	}
 }
