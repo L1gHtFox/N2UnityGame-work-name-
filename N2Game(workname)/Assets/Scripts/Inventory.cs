@@ -13,6 +13,11 @@ public class Inventory : MonoBehaviour {
 	public GameObject massageManager;
 	public GameObject massage;
 
+	public FPSInput fpsi;
+	public MouseLook playerLook;
+	public MouseLook camLook;
+	public RayShooter rayShooter;
+
 	void Start () {
 		item = new List<Item>();
 		for (int i = 0; i < cellContainer.transform.childCount; i++) {
@@ -84,7 +89,20 @@ public class Inventory : MonoBehaviour {
 		if (Input.GetKeyDown (ShowInventory)) {
 			if (cellContainer.activeSelf) {
 				cellContainer.SetActive (false);
+				fpsi.enabled = true;
+				camLook.enabled = true;
+				playerLook.enabled = true;
+				rayShooter.enabled = true;
+				Cursor.visible = false;
+				Cursor.lockState = CursorLockMode.Locked;
+				Time.timeScale = 1;
 			} else {
+				fpsi.enabled = false;
+				camLook.enabled = false;
+				playerLook.enabled = false;
+				rayShooter.enabled = false;
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
 				cellContainer.SetActive (true);
 			}
 		}
