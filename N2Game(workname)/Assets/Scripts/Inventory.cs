@@ -10,6 +10,9 @@ public class Inventory : MonoBehaviour {
 	public KeyCode ShowInventory;
 	public KeyCode takeButton;
 
+	public GameObject massageManager;
+	public GameObject massage;
+
 	void Start () {
 		item = new List<Item>();
 		for (int i = 0; i < cellContainer.transform.childCount; i++) {
@@ -25,11 +28,24 @@ public class Inventory : MonoBehaviour {
 			RaycastHit hit;
 			if(Physics.Raycast(ray,out hit,2f)){
 				if (hit.collider.GetComponent<Item>()){
+					Item currentItem = hit.collider.GetComponent<Item> ();
+					Massage (currentItem);
 					AddItem(hit.collider.GetComponent<Item>());
 					}
 				}
 			}
 		}
+
+	void Massage(Item currentItem){
+		GameObject msgObj = Instantiate (massage);
+		msgObj.transform.SetParent (massageManager.transform);
+
+		Image msgImg = msgObj.transform.GetChild (0).GetComponent<Image> ();
+		msgImg.sprite = Resources.Load<Sprite> (currentItem.pathIcon);
+
+		Text msgTxt = msgObj.transform.GetChild (1).GetComponent<Text>();
+		msgTxt.text = currentItem.nameItem;
+	}
 
 	void AddItem(Item currentItem){
 		if(currentItem.isStackable==true){

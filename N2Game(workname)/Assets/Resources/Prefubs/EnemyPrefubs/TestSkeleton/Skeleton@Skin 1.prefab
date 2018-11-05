@@ -1212,6 +1212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCharecter: {fileID: 0}
   dist: 0
+  attackRadius: 0
   radius: 10
 --- !u!137 &137566350827108270
 SkinnedMeshRenderer:
