@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour {
 
 	List<Item> item;
-	public GameObject cellContainer;
 	public KeyCode ShowInventory;
 	public KeyCode takeButton;
 
 	public GameObject massageManager;
 	public GameObject massage;
+	public GameObject cellContainer;
 
 	public FPSInput fpsi;
 	public MouseLook playerLook;

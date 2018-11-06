@@ -18,6 +18,7 @@ public class MouseLook : MonoBehaviour {
 
     private float _rotationX = 0;
 
+
     private void Start()
     {
         Rigidbody body = GetComponent<Rigidbody>();

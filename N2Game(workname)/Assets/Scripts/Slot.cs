@@ -11,6 +11,10 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 	Sprite cell;
 	Image img;
 
+	void OnDisable(){
+		img.sprite = cell;
+	}
+
 	void Start () {
 		img = GetComponent<Image>();
 		cell = img.sprite;
