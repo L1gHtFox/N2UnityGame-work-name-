@@ -38,4 +38,8 @@ public class PlayerUI : MonoBehaviour {
 			Debug.Log ("You died");
 		}
 	}
+
+	public void Healing(int value){
+		_health += value;
+	}
 }

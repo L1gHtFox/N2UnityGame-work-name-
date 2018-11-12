@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Item : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class Item : MonoBehaviour {
 	public bool isStackable;
 	[Multiline(5)]
 	public string descriptionItem;
-	public string pathIcon;
-	public string pathPrefab;
+	public bool isRemoveable;
+	public bool isDroped;
+	public Sprite Icon;
+	public UnityEvent customEvent;
 }
