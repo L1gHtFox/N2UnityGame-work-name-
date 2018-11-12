@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - N2wall
-  - InventoryManager
   layers:
   - Default
   - TransparentFX
