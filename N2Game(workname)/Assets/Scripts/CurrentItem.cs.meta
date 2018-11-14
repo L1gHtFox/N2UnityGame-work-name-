@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 619eeae53a00b8841b2057780b01b6da
-=======
 guid: 8c5d7140ca809f64bad698b156d9e524
->>>>>>> parent of 093ed08... Revert "инвентарь 0.5 теперь предметы можно выкидывать из инвентаря,предметы rigitbody(имеют падают и отталкиваются от стен)//Наконец доделал половину по инвентарю"
+guid: 8c5d7140ca809f64bad698b156d9e524
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

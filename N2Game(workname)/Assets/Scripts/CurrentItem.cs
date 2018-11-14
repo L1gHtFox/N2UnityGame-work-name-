@@ -18,7 +18,6 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler {
 	}
 		
 	public void OnPointerClick (PointerEventData eventData){
-<<<<<<< HEAD
 		if (eventData.button == PointerEventData.InputButton.Left) {
 			if(inventory.item[index].customEvent != null){
 				inventory.item [index].customEvent.Invoke ();
@@ -57,7 +56,6 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler {
 						dropdeObj.transform.position = Camera.main.transform.position + Camera.main.transform.forward;
 					}
 				}
-=======
 		if (eventData.button == PointerEventData.InputButton.Right) {
 			if (inventory.item [index].id != 0) {
 				GameObject dropdeObj = Instantiate (Resources.Load<GameObject> (inventory.item [index].pathPrefab));
@@ -68,7 +66,6 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler {
 					inventory.item [index] = new Item ();
 				}
 				inventory.DisplayItems ();
->>>>>>> parent of 093ed08... Revert "инвентарь 0.5 теперь предметы можно выкидывать из инвентаря,предметы rigitbody(имеют падают и отталкиваются от стен)//Наконец доделал половину по инвентарю"
 			}
 		}
 	}

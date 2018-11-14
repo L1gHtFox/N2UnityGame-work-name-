@@ -21,5 +21,11 @@ MonoBehaviour:
   m_Int_values: 
   m_Float_values: []
   m_String_values: []
+  m_Bool_values: 01010101
+  m_Int_values: 0000000002000000000000000000000001000000
+  m_Float_values:
+  - 0
+  - 0
+  m_String_values:
   m_Color_values: []
   m_Material_values: []
