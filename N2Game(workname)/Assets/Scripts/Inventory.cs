@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
 
-	[HideInInspector]
-	public List<Item> item;
-
+	List<Item> item;
 	public KeyCode ShowInventory;
 	public KeyCode takeButton;
 
@@ -22,10 +20,6 @@ public class Inventory : MonoBehaviour {
 
 	void Start () {
 		item = new List<Item>();
-
-		for(int i = 0;i < cellContainer.transform.childCount;i++){
-			cellContainer.transform.GetChild(i).GetComponent<CurrentItem>().index = i;
-		}
 		for (int i = 0; i < cellContainer.transform.childCount; i++) {
 			item.Add (new Item ());
 			cellContainer.SetActive (false);
@@ -114,7 +108,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 
-	public void DisplayItems(){
+	void DisplayItems(){
 		for (int i = 0; i < item.Count; i++) {
 			Transform cell = cellContainer.transform.GetChild (i);
 			Transform icon = cell.GetChild (0);
@@ -129,9 +123,8 @@ public class Inventory : MonoBehaviour {
 
 				if (item [i].countItem > 1) {
 					txt.text = item [i].countItem.ToString ();
-				} else {
-					txt.text = null;
 				}
+
 			} else {
 				img.enabled = false;
 				img.sprite = null;
