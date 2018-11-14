@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour {
 	public GameObject massageManager;
 	public GameObject massage;
 	public GameObject cellContainer;
+	public GameObject database;
 
 	public FPSInput fpsi;
 	public MouseLook playerLook;
@@ -46,7 +47,7 @@ public class Inventory : MonoBehaviour {
 		msgObj.transform.SetParent (massageManager.transform);
 
 		Image msgImg = msgObj.transform.GetChild (0).GetComponent<Image> ();
-		msgImg.sprite = Resources.Load<Sprite> (currentItem.pathIcon);
+		msgImg.sprite = currentItem.Icon;
 
 		Text msgTxt = msgObj.transform.GetChild (1).GetComponent<Text>();
 		msgTxt.text = currentItem.nameItem;
@@ -119,7 +120,7 @@ public class Inventory : MonoBehaviour {
 
 			if (item [i].id != 0) {
 				img.enabled = true;
-				img.sprite = Resources.Load<Sprite> (item [i].pathIcon);
+				img.sprite = item [i].Icon;
 
 				if (item [i].countItem > 1) {
 					txt.text = item [i].countItem.ToString ();
