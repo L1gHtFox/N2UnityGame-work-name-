@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33435869858869402}
   - component: {fileID: 23579228620236594}
   - component: {fileID: 135918266761938134}
-  - component: {fileID: 114190929520993824}
+  - component: {fileID: 114422786881658866}
   - component: {fileID: 54797483157481830}
   m_Layer: 0
   m_Name: PoisonSphere
@@ -101,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114190929520993824
+--- !u!114 &114422786881658866
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,31 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea2b87130fb135419eccc7950bd5ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameItem: PoisonSphere
+  nameItem: 
   id: 2
   countItem: 0
   isStackable: 0
-  descriptionItem: Just a sphere
-  isRemoveable: 1
-  isDroped: 1
-  Icon: {fileID: 21300000, guid: aede6ae3dc7744767a6a5c14fec87326, type: 3}
-  customEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114570686753992458, guid: 48301d5c6da296c47b78cdd2b168c5aa,
-          type: 2}
-        m_MethodName: Healing
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: -25
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  descriptionItem: 
+  pathIcon: 
+  pathPrefab: 
 --- !u!135 &135918266761938134
 SphereCollider:
   m_ObjectHideFlags: 1
