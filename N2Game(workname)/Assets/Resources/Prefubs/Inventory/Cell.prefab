@@ -22,8 +22,7 @@ GameObject:
   - component: {fileID: 222760563545102930}
   - component: {fileID: 114020947282742030}
   - component: {fileID: 114379570673545474}
-  - component: {fileID: 114361433013561960}
-  - component: {fileID: 114099388815577844}
+  - component: {fileID: 114078427019618232}
   - component: {fileID: 114403672050077232}
   m_Layer: 5
   m_Name: Cell
@@ -31,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1073516583089828
 GameObject:
   m_ObjectHideFlags: 1
@@ -94,7 +93,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114099388815577844
+--- !u!114 &114078427019618232
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1051704501383132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5d7140ca809f64bad698b156d9e524, type: 3}
+  m_Script: {fileID: 11500000, guid: 619eeae53a00b8841b2057780b01b6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
@@ -129,18 +128,6 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &114361433013561960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1051704501383132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5d7140ca809f64bad698b156d9e524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  index: 0
 --- !u!114 &114379570673545474
 MonoBehaviour:
   m_ObjectHideFlags: 1

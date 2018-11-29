@@ -116,8 +116,14 @@ MonoBehaviour:
   countItem: 0
   isStackable: 1
   descriptionItem: Just a cube
-  pathIcon: 
-  pathPrefab: 
+  isRemoveable: 0
+  isDroped: 0
+  Icon: {fileID: 21300000, guid: a4c70a25dc3144ee1b1bd029cc5c8b69, type: 3}
+  customEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!224 &224568156911154128
 RectTransform:
   m_ObjectHideFlags: 1

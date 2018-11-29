@@ -117,8 +117,14 @@ MonoBehaviour:
   countItem: 0
   isStackable: 0
   descriptionItem: 
-  pathIcon: 
-  pathPrefab: 
+  isRemoveable: 1
+  isDroped: 1
+  Icon: {fileID: 21300000, guid: d2361b2766c0f4c9889b9df2498769f6, type: 3}
+  customEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!135 &135918266761938134
 SphereCollider:
   m_ObjectHideFlags: 1

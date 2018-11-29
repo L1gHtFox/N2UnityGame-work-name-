@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.43669623, g: 0.48429418, b: 0.56454366, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -52,8 +52,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
@@ -3787,7 +3787,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &884293447
 Light:
@@ -4858,7 +4858,7 @@ Transform:
   - {fileID: 2002672591}
   - {fileID: 662650395}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1205770089
 Mesh:
@@ -5201,7 +5201,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 91.451996, y: -30, z: 0}
 --- !u!43 &1389008800
 Mesh:
@@ -5688,47 +5688,6 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
---- !u!1 &1895834014 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1616029696307626, guid: ec03afe4438a51a4bb4706b167a88a59,
-    type: 2}
-  m_PrefabInternal: {fileID: 2090654936}
---- !u!114 &1895834015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1895834014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 456d76ebfb9da614da27f0b0a86c95fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 1
-  _N2: 1
-  _HaveN2: 1
-  UIHealth: {fileID: 0}
-  UIN2: {fileID: 0}
---- !u!1 &1966573797 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1044720422949296, guid: ec03afe4438a51a4bb4706b167a88a59,
-    type: 2}
-  m_PrefabInternal: {fileID: 2090654936}
---- !u!111 &1966573799
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1966573797}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 92513e9ed17ffa24bae424934542ec7b, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!43 &1989868009
 Mesh:
   m_ObjectHideFlags: 0
