@@ -6,22 +6,26 @@ using System.Collections;
 public class FPSInput : MonoBehaviour {
     public float speed = 2.5f;
 	public float gravity = -1.61f;
-
-    private CharacterController _charController;
+    public float jumpForce = 3f;
+    public Vector3 movement = Vector3.zero;
 
 	void Start () {
-        _charController = GetComponent<CharacterController>();	
+
 	}
 
-	void Update () {
+    void Update() {
+        CharacterController controller = gameObject.GetComponent<CharacterController>();
+        if (controller.isGrounded)
+        {
+            movement = new Vector3(Input.GetAxis("Horizontal")* speed, 0, Input.GetAxis("Vertical")*speed);
+            movement = transform.TransformDirection(movement);
+            if (Input.GetKeyDown(KeyCode.Space)) ;
+            {
+                movement.y = jumpForce;
+            }
+            movement.y -= gravity * Time.deltaTime;
+            controller.Move(movement * Time.deltaTime);
 
-        float deltaX = Input.GetAxis("Horizontal") * speed;
-        float deltaZ = Input.GetAxis("Vertical") * speed;
-        Vector3 movement = new Vector3(deltaX, gravity, deltaZ);
-        movement = Vector3.ClampMagnitude(movement, speed);
-
-        movement *= Time.deltaTime;
-        movement = transform.TransformDirection(movement);
-        _charController.Move(movement); 
-	}
+        }
+    }
 }
