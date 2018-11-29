@@ -3,36 +3,25 @@ using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Controll Script/FPS Input")]
-public class FPSInput : MonoBehaviour
-{
-    CharacterController controller;
+public class FPSInput : MonoBehaviour {
     public float speed = 2.5f;
-    public float gravity = -1.6f;
-    float jForce;
-    float jSpeed = 01;
+	public float gravity = -1.61f;
+
     private CharacterController _charController;
 
-    public float timer = 10;
+	void Start () {
+        _charController = GetComponent<CharacterController>();	
+	}
 
-    void Awake()
-    {
-        controller = GetComponent<CharacterController>();
-    }
-
-    void Update()
-    {
+	void Update () {
 
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
-        Vector3 dir = new Vector3(deltaX, gravity, deltaZ);
-        dir = Vector3.ClampMagnitude(dir, speed);
-        if (controller.isGrounded)
-        {
-            jForce = 0;
-            if (Input.GetKeyDown(KeyCode.Space)) ;
-        }
-        jForce = jSpeed;
+        Vector3 movement = new Vector3(deltaX, gravity, deltaZ);
+        movement = Vector3.ClampMagnitude(movement, speed);
 
-        _charController.Move(dir);
-    }
+        movement *= Time.deltaTime;
+        movement = transform.TransformDirection(movement);
+        _charController.Move(movement); 
+	}
 }
