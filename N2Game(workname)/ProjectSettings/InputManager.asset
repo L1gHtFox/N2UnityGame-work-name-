@@ -233,7 +233,7 @@ InputManager:
     m_Name: Run
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: right shift
+    negativeButton: 
     positiveButton: left shift
     altNegativeButton: 
     altPositiveButton: 

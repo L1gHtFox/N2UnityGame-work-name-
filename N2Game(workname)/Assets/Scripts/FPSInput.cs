@@ -9,7 +9,7 @@ public class FPSInput : MonoBehaviour {
     private float jForce=12f;
     private float gravity;
     private Vector3 movement;
-    public float Stamina = 100f;
+    public float Stamina = 100;
 
     float MaxStamina = 100f;
     bool bRun;
