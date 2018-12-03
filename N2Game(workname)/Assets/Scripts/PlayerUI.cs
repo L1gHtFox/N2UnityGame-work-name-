@@ -3,43 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : MonoBehaviour {
-	public float _health;
-	public float _N2;
-	public bool _HaveN2 = true;
-	public Image UIHealth;
-	public Image UIN2;
+public class HelthBar : MonoBehaviour {
+	[SerializeField]
+	private Slider HpSlider;
+	private Slider N2Slider;
 
-	void OnTriggerEnter(Collider N2transitor){
-		if(_HaveN2 == true){
-		_HaveN2 =false;
-		}else{
-			_HaveN2 = true;
+	public float currentHealth = 100;
+	public float currentN2 = 100;
+
+	private float maxHealth = 100;
+	private float minHealth = 0;
+
+	private float maxN2 = 100;
+	private float minN2 = 0;
+
+	public float time = 1f;
+
+	void Star(){
+		StartCoroutine(MinusN2(20));
+	}
+
+	void Update(){
+		if (currentN2 <= minN2) {
+			PlayerDamage (20);
+		}
+		if (Input.GetKeyDown (KeyCode.E)) {
+			PlayerDamage (10);
+		}
+		if(Input.GetKeyDown(KeyCode.R)){
+			PlayerHealing(10);
 		}
 	}
 
-	void FixedUpdate () {
-		if (_HaveN2 == true && _N2 <= 1f && _N2 >0) {
-			_N2 = _N2 - 0.1f * Time.deltaTime;
-		} else if(_N2<1f && _N2>=-0.002f) {
-			_N2 += 0.1f * Time.deltaTime;
-		}
-		UIHealth.fillAmount = _health;
-		UIN2.fillAmount = _N2;
-		if (_N2 <= 0) {
-			_health = _health - 0.01f * Time.deltaTime;
+	public void PlayerDamage (float damage){
+		currentHealth -= damage;
+		HpSlider.value = currentHealth;
+		if (currentHealth < 0) {
+			currentHealth = minHealth;
 		}
 	}
 
-	public void Hurt(float damage){
-		_health -= damage;
-		Debug.Log ("Helth: " +_health);
-		if (_health < 0) {
-			Debug.Log ("You died");
-		}
+	public void PlayerHealing(float healing){
+		
+		currentHealth += healing;
+		HpSlider.value = currentHealth;
 	}
 
-	public void Healing(int value){
-		_health += value;
-	}
+	public IEnumerator MinusN2(float n){
+		while(currentN2 >= minN2){
+			yield return new WaitForSeconds(time);
+			currentN2 -= n;
+			N2Slider.value = currentN2;
+		}
 }

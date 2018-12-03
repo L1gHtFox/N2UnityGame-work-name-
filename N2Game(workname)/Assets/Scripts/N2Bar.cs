@@ -11,19 +11,24 @@ public class N2Bar : MonoBehaviour {
 
 	private float minN2 = 0;
 
-
+	public float playerHealth;
 
 	void Start () {
+		playerHealth = GameObject.FindWithTag ("Player").GetComponent<HelthBar>().currentHealth;
 		slider = GetComponent<Slider> ();
 		slider.interactable = false;
-		StartCoroutine (MinusN2 (2));
+		StartCoroutine (MinusN2 (20));
 	}
+		
 
 	public IEnumerator MinusN2(float n){
 		while(currentN2 >= minN2){
 			yield return new WaitForSeconds(time);
 			currentN2 -= n;
 			slider.value = currentN2;
+		}
+		if (currentN2 < minN2) {
+			playerHealth -= 10;
 		}
 	}
 }
