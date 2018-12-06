@@ -38,4 +38,6 @@ public class HelthBar : MonoBehaviour {
 		currentHealth += healing;
 		HpSlider.value = currentHealth;
 	}
+
+
 }
