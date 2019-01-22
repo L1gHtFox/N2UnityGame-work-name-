@@ -34,3 +34,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+N2Game\(workname\)/Assets/Scenes/Test polygon/Test polygon\.unity
+
+N2Game\(workname\)/Assets/Scripts/FPSInput\.cs
+
+N2Game\(workname\)/ProjectSettings/ProjectVersion\.txt

@@ -9,7 +9,6 @@ public class HelthBar : MonoBehaviour {
 
 	public float currentHealth = 100;
 
-	private float maxHealth = 100;
 	private float minHealth = 0;
 
 	void Star(){
@@ -38,4 +37,6 @@ public class HelthBar : MonoBehaviour {
 		currentHealth += healing;
 		HpSlider.value = currentHealth;
 	}
+
+
 }
