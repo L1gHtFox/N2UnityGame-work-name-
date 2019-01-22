@@ -7,6 +7,7 @@ TagManager:
   - N2wall
   - InventoryManager
   - HpSliderBar
+  - Trigger
   layers:
   - Default
   - TransparentFX
