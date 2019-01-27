@@ -50,7 +50,7 @@ public class PlayerUI : MonoBehaviour {
 
 		currentHealth += healing;
 		HpSlider.value = currentHealth;
-		if (currentHealth > 0) {
+		if (currentHealth > maxHealth) {
 			currentHealth = maxHealth;
 		}
 	}
@@ -63,6 +63,12 @@ public class PlayerUI : MonoBehaviour {
 		}
 		if (currentN2 <= minN2) {
 			PlayerDamage (20);
+		}
+	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.tag == "SwordHitBox") {
+			PlayerDamage (10);
 		}
 	}
 }

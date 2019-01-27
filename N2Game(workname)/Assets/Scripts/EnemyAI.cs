@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour {
 
 	void Update () {
 		dist = Vector3.Distance (playerCharecter.transform.position, transform.position);
-		if (dist > radius) {
+		if (dist > radius & dist > attackRadius) {
 			nav.enabled = false;
 			gameObject.GetComponent<Animator> ().SetTrigger ("Idle");
 		} 

@@ -62,7 +62,7 @@ public class RailPistol : MonoBehaviour {
 	}
 
 	IEnumerator Reloading(){
-	if (allAmmo != 0) {
+		if (allAmmo != 0 && currentAmmo != ammo) {
 			ammoInMagazineText.text = "Reloading";
 			yield return new WaitForSeconds (3);
 			takeAmmo = ammo - currentAmmo;
@@ -70,6 +70,11 @@ public class RailPistol : MonoBehaviour {
 			currentAmmo += takeAmmo;
 			ammoInMagazineText.text = currentAmmo.ToString ();
 			allAmmoText.text = allAmmo.ToString ();
+		} else if (currentAmmo == ammo) {
+			ammoInMagazineText.text = "Full_Magazine";
+			yield return new WaitForSeconds (1);
+			ammoInMagazineText.text = currentAmmo.ToString ();
 		}
+
 	}
 }
