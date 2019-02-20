@@ -41,7 +41,6 @@ public class FPSInput : MonoBehaviour
 
     void Update()
     {
-
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
         Vector3 movement = new Vector3(deltaX, gravity, deltaZ);
@@ -96,7 +95,6 @@ public class FPSInput : MonoBehaviour
                 if (speed > shiftspeed) speed = shiftspeed;
                 Stamina -= Time.deltaTime * 15;
             }
-
             else
                 //standart //////////////////////////
                 if (bWalk == false && _charController.isGrounded)
@@ -117,10 +115,7 @@ public class FPSInput : MonoBehaviour
                 if (Idle == true && bWalk == true) Stamina += Time.deltaTime * 12;
             }
         }
-
-        else
-
-        if (SafeZone == true)
+        else if (SafeZone == true)
         {
             // safezone running ////////////////////////////////////////////
             if (Input.GetButton("Run") && _charController.isGrounded)
@@ -149,7 +144,4 @@ public class FPSInput : MonoBehaviour
         if (SafeZone == false) SafeZone = true;
         else SafeZone = false;
     }
-
 }
-
-

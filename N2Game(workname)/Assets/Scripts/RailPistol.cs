@@ -21,14 +21,17 @@ public class RailPistol : MonoBehaviour {
 
 	public Camera fpsCam;
 
-	void Start(){
-		ammoInMagazineText = GameObject.Find ("AmmoInMagazine").GetComponent<Text>();
-		allAmmoText = GameObject.Find ("Ammo").GetComponent<Text>();
+	void Start()
+    {
+		ammoInMagazineText = GameObject.FindWithTag ("Text_gun_One/N1").GetComponent<Text>();
+		allAmmoText = GameObject.FindWithTag("Text_gun_One/N2").GetComponent<Text>();
+
 		ammoInMagazineText.text = currentAmmo.ToString();
 		allAmmoText.text = allAmmo.ToString();
 	}
 
-	public void Update () {
+	public void Update ()
+    {
 		if (Input.GetButtonDown ("Fire1") && currentAmmo > 0) {
 			currentAmmo -= 1f;
 			ammoInMagazineText.text = currentAmmo.ToString ();
@@ -40,7 +43,8 @@ public class RailPistol : MonoBehaviour {
 		}
 	}
 
-	private void Shoot(){
+	private void Shoot()
+    {
 		muzzleFlash.Play();
 		RaycastHit hit;
 
@@ -61,9 +65,11 @@ public class RailPistol : MonoBehaviour {
 		}
 	}
 
-	IEnumerator Reloading(){
-	if (allAmmo != 0) {
-			ammoInMagazineText.text = "Reloading";
+	IEnumerator Reloading()
+    {
+	    if (allAmmo != 0)
+        {
+			ammoInMagazineText.text = "Recharge";
 			yield return new WaitForSeconds (3);
 			takeAmmo = ammo - currentAmmo;
 			allAmmo -= takeAmmo;

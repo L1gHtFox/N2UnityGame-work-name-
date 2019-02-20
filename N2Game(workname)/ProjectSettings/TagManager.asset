@@ -7,6 +7,12 @@ TagManager:
   - N2wall
   - InventoryManager
   - HpSliderBar
+  - Text_gun_Null/N1
+  - Text_gun_Null/N2
+  - Text_gun_One/N1
+  - Text_gun_One/N2
+  - Text_gun_Two/N1
+  - Text_gun_Two/N2
   layers:
   - Default
   - TransparentFX
