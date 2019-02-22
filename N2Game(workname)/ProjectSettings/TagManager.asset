@@ -13,6 +13,8 @@ TagManager:
   - Text_gun_One/N2
   - Text_gun_Two/N1
   - Text_gun_Two/N2
+  - Indicator_0
+  - Indicator_1
   layers:
   - Default
   - TransparentFX

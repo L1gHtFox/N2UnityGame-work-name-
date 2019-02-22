@@ -182,7 +182,7 @@ InputManager:
     axis: 1
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Recharge
+    m_Name: Reloading
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 

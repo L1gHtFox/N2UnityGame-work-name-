@@ -6,107 +6,86 @@ using UnityEngine.UI;
 
 public class Create_projectile : MonoBehaviour
 {
-    //значения, которые требуют ссылки
-    private GameObject _prefabProjectile; //объект "bullet"
-    private GameObject _camera; //камера героя 
+    //индикаторы методов
+    private GameObject Indic_0;
+    private GameObject Indic_1;
 
     //значения методов стрельбы
+    private int _value_Shoot; //значение текущего выбранного метода стрельбы
     public int current_MOS = 0; //текущий выбранный метод
-    public int total_MOS = 1; //максимальное кол - во методов
-    
-    //значения патрон
-    public int fullAmmo = 180; //максимальный запас патрон
-    public int defltAmmoMag = 30; //стандартный запас патрон в обойме
-    public int currentAmmo = 30; //текущий запас патрон в обойме
-    
-    //текстовые объекты
-    public Text ammoInMagazineText; //текст кол - во патрон в обойме
-    public Text fullAmmoText; //текст макс. кол - во патрон
-
-    //значения оружий
-    public int scrollInt = 0; //текущее оружие
-    public int maxGuns = 2; //всего оружий экипировано
+    public int total_MOS = 1; //максимальное кол - во методов    
 
 
-    void Start()
-    {
-        //ссыклка на текст, показывающий кол - во патрон в обойме
-        ammoInMagazineText = GameObject.FindWithTag("Text_gun_Two/N1").GetComponent<Text>();
-
-        //ссылка на текст, показывающий макс. кол - во патрон
-        fullAmmoText = GameObject.FindWithTag("Text_gun_Two/N2").GetComponent<Text>();
-
-        ammoInMagazineText.text = currentAmmo.ToString(); //вывод кол - ва патрон в обойме на экран
-        fullAmmoText.text = fullAmmo.ToString(); //вывод макс. кол - ва патрон на экран
- 
-        //поиск камеры по тегу
-        _camera = GameObject.FindWithTag("MainCamera");
+    private void Start()
+    {       
+        //поиск индикаторов
+        Indic_0 = GameObject.Find("Indicator_0");
+        Indic_1 = GameObject.Find("Indicator_1");       
     }
 
-    void Update()
-    {      
-        shoot();
-    }
 
-    //стрельба объектами
-    public void shoot()
+    private void Update()
     {
-        choose_MOS(); //подключение возможности "выбор метода стрельбы"
-     
-        if (Input.GetMouseButtonDown(0) && current_MOS == 0 && currentAmmo > 0)
-        {
-            //создание "bullet", путем доставания ее из папки
-            _prefabProjectile = Resources.Load("Prefubs/Gun_two/projectile_M0") as GameObject;
-
-            GameObject projectile = Instantiate(_prefabProjectile);            
-
-            projectile.transform.position = _camera.transform.TransformPoint(Vector3.forward * 1.5f);
-            projectile.transform.rotation = _camera.transform.rotation;           
-
-            currentAmmo -= 1;
-            ammoInMagazineText.text = currentAmmo.ToString();             
-        }
-        else if (Input.GetMouseButton(0) && current_MOS == 1 && currentAmmo > 0)
-        {
-            //создание "bullet", путем доставания ее из папки
-            _prefabProjectile = Resources.Load("Prefubs/Gun_two/projectile_M1") as GameObject;
-
-            GameObject projectile = Instantiate(_prefabProjectile);
-
-            projectile.transform.position = _camera.transform.TransformPoint(Vector3.forward * 1.5f);
-            projectile.transform.rotation = _camera.transform.rotation;
-
-            currentAmmo -= 1;
-            ammoInMagazineText.text = currentAmmo.ToString();
-        }
-        else if (currentAmmo <= 0 && fullAmmo - currentAmmo > 0)
-        {
-            recharge();           
-        }
-        else if (Input.GetButtonDown("Recharge") && fullAmmo > 0)
-        {
-            recharge();
-        }        
-    }   
+        choose_MOS();
+    }
 
     //выбор метода стрельбы
-    public int choose_MOS()
+    private void choose_MOS()
     {
-        if (Input.GetButtonDown("Change")) current_MOS += 1;
-        if (current_MOS > total_MOS) current_MOS = 1;      
+        switch (value_MOS())
+        {
+            case 0:
+                Indic_1.SetActive(false);
+                Indic_0.SetActive(true);
 
-        return current_MOS;
+                break;
+
+            case 1:
+                Indic_0.SetActive(false);
+                Indic_1.SetActive(true);
+                break;
+        }
     }
 
-    //перезарядка оружия
-    private void recharge()
+    //проверка истины стрельбы
+    private void true_of_Shoot()
     {
-        if (fullAmmo - currentAmmo > 0) fullAmmo -= (defltAmmoMag - currentAmmo);
-        else if (fullAmmo - currentAmmo < 0) Debug.Log("Нет патронов для пополнения обоймы!"); ;        
+        /* ЮНИТИ НЕ ХОЧЕТ КОМПИЛИТЬ ГЕЙМ С ЭТИМИ СТРОКАМИ
+        while (fullAmmo > 0)        
+            switch (_value_Shoot)
+            {
+                case 0:
+                    if (currentAmmo > 0 && Input.GetButtonDown("Fire1"))
+                    {
+                        _prefabProjectile = Resources.Load("Prefubs/Gun_two/projectile_M0") as GameObject;
+                        Shoot();
+                    }
+                    else if (Input.GetButtonDown("Reloading")) Reloading();
+                    break;
 
-        currentAmmo = defltAmmoMag;
-       
-        ammoInMagazineText.text = currentAmmo.ToString();
-        fullAmmoText.text = fullAmmo.ToString();
+                case 1:
+                    if (currentAmmo > 0 && Input.GetButton("Fire1"))
+                    {
+                        _prefabProjectile = Resources.Load("Prefubs/Gun_two/projectile_M1") as GameObject;
+                        Shoot();
+                    }
+                    else if (Input.GetButtonDown("Reloading")) Reloading();
+                    break;
+
+                default:
+
+                    Reloading();
+                    break;
+            }
+        */     
+    }
+
+    //определение значения текущего метода стрельбы
+    private int value_MOS()
+    {
+        if (Input.GetButtonDown("Change")) current_MOS += 1;
+        if (current_MOS > total_MOS) current_MOS = 0;
+
+        return current_MOS;
     }
 }

@@ -20,6 +20,7 @@ public class Method_of_shoot_0 : MonoBehaviour
 
     private void OnCollisionEnter (Collision other)
     {
-        Destroy(gameObject);
+        speed = 0;
+        // Destroy(gameObject);
     }
 }

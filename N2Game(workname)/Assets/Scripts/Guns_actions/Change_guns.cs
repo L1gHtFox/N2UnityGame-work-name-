@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 public class Change_guns : MonoBehaviour
 {
     //объекты "Gun_..." и их патроны
     public GameObject Gun_null;
-    private GameObject Canvas0;
-   
+    public GameObject Canvas0;
+
     public GameObject Gun_one;
-    private GameObject Canvas1;
+    public GameObject Canvas1;
 
     public GameObject Gun_two;
-    private GameObject Canvas2;
-
+    public GameObject Canvas2;
 
     //значения оружий
     public int scrollInt = 0; //текущее оружие
@@ -23,6 +23,10 @@ public class Change_guns : MonoBehaviour
 
     private void Start()
     {
+        Gun_null = GameObject.Find("Gun_null");
+        Gun_one = GameObject.Find("Gun_one");
+        Gun_two = GameObject.Find("Gun_two");
+
         Canvas0 = GameObject.Find("Canvas_0");
         Canvas1 = GameObject.Find("Canvas_1");
         Canvas2 = GameObject.Find("Canvas_2");

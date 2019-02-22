@@ -23,8 +23,8 @@ public class RailPistol : MonoBehaviour {
 
 	void Start()
     {
-		ammoInMagazineText = GameObject.FindWithTag ("Text_gun_One/N1").GetComponent<Text>();
-		allAmmoText = GameObject.FindWithTag("Text_gun_One/N2").GetComponent<Text>();
+		ammoInMagazineText = GameObject.Find ("AmmoInMagazine_1").GetComponent<Text>();
+		allAmmoText = GameObject.Find("Full_Ammo_1").GetComponent<Text>();
 
 		ammoInMagazineText.text = currentAmmo.ToString();
 		allAmmoText.text = allAmmo.ToString();
@@ -69,7 +69,7 @@ public class RailPistol : MonoBehaviour {
     {
 	    if (allAmmo != 0)
         {
-			ammoInMagazineText.text = "Recharge";
+			ammoInMagazineText.text = "Reloading";
 			yield return new WaitForSeconds (3);
 			takeAmmo = ammo - currentAmmo;
 			allAmmo -= takeAmmo;
