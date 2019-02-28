@@ -12,9 +12,12 @@ public class Way_shoot_1 : MonoBehaviour
 
     //значения патрон
     public int fullAmmo = 180; //максимальный запас патрон
+    public int currentAmmo = 30; //текущий запас патрон в обойме
     public int defltAmmoMag = 30; //стандартный запас патрон в обойме
-    public int currentAmmo = 0; //текущий запас патрон в обойме
     public int takeAmmo = 0; //патроны, которые герой собирается применить
+
+    //проверка на перезарядку
+    public bool reload = false;
 
     //текстовые объекты
     public Text MagazineText; //текст кол - во патрон в обойме
@@ -37,9 +40,12 @@ public class Way_shoot_1 : MonoBehaviour
 
 
     private void Update()
-    {
-        MagazineText.text = currentAmmo.ToString(); //вывод кол - ва патрон в обойме на экран
-        fullAmmoText.text = fullAmmo.ToString(); //вывод макс. кол - ва патрон на экран
+    {       
+        if (reload == false)
+        {
+            MagazineText.text = currentAmmo.ToString(); //вывод кол - ва патрон в обойме на экран
+            fullAmmoText.text = fullAmmo.ToString(); //вывод макс. кол - ва патрон на экран
+        }
 
         true_of_Shoot();
     }
@@ -47,10 +53,11 @@ public class Way_shoot_1 : MonoBehaviour
     //проверка истины стрельбы
     private void true_of_Shoot()
     {
-        if (Input.GetButton("Fire1") && currentAmmo > 0)
+        if (reload == false && Input.GetButton("Fire1") && currentAmmo > 0)
             Shoot();
         else if (Input.GetButtonDown("Reloading") || currentAmmo == 0)
-            Reloading();    
+            if (reload == false)
+                StartCoroutine(enum_reload());          
     }
 
     //выстрел
@@ -67,26 +74,39 @@ public class Way_shoot_1 : MonoBehaviour
         MagazineText.text = currentAmmo.ToString();
     }
 
+    //последовательность действий при перезарядки
+    private IEnumerator enum_reload()
+    {
+        if (fullAmmo != 0)
+        { 
+            MagazineText.text = "Reloading";
+            reload = true; //сообщаем о том что оружие на перезарядке
+        }
+        else
+            MagazineText.text = "No_ammo";
+
+        //ждем "завершения" перезарядки
+        yield return new WaitForSeconds(1.9f);
+        Reloading();          
+    }
+
     //перезарядка оружия
     private void Reloading()
     {        
-        if (fullAmmo >= takeAmmo)
-        {
-            takeAmmo = defltAmmoMag - currentAmmo;
+        takeAmmo = defltAmmoMag - currentAmmo;
 
+        if (fullAmmo >= takeAmmo)
+        {            
             fullAmmo -= takeAmmo;
             currentAmmo = defltAmmoMag;
-
-            MagazineText.text = currentAmmo.ToString();
-            fullAmmoText.text = fullAmmo.ToString();
         }
         else if (fullAmmo <= takeAmmo && fullAmmo > 0)
         {
             currentAmmo = fullAmmo;
             fullAmmo -= fullAmmo;
-
-            MagazineText.text = currentAmmo.ToString();
-            fullAmmoText.text = fullAmmo.ToString();
         }
+
+        //сообщяем о завершении перезарядки
+        reload = false;
     }
 }

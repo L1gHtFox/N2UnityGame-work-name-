@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Create_projectile : MonoBehaviour
+public class Сheck_indicators : MonoBehaviour
 {
     //индикаторы методов
     private GameObject Indic_0;
@@ -45,39 +45,6 @@ public class Create_projectile : MonoBehaviour
                 Indic_1.SetActive(true);
                 break;
         }
-    }
-
-    //проверка истины стрельбы
-    private void true_of_Shoot()
-    {
-        /* ЮНИТИ НЕ ХОЧЕТ КОМПИЛИТЬ ГЕЙМ С ЭТИМИ СТРОКАМИ
-        while (fullAmmo > 0)        
-            switch (_value_Shoot)
-            {
-                case 0:
-                    if (currentAmmo > 0 && Input.GetButtonDown("Fire1"))
-                    {
-                        _prefabProjectile = Resources.Load("Prefubs/Gun_two/projectile_M0") as GameObject;
-                        Shoot();
-                    }
-                    else if (Input.GetButtonDown("Reloading")) Reloading();
-                    break;
-
-                case 1:
-                    if (currentAmmo > 0 && Input.GetButton("Fire1"))
-                    {
-                        _prefabProjectile = Resources.Load("Prefubs/Gun_two/projectile_M1") as GameObject;
-                        Shoot();
-                    }
-                    else if (Input.GetButtonDown("Reloading")) Reloading();
-                    break;
-
-                default:
-
-                    Reloading();
-                    break;
-            }
-        */     
     }
 
     //определение значения текущего метода стрельбы

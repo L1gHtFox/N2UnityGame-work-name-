@@ -10,17 +10,25 @@ public class Method_of_shoot_0 : MonoBehaviour
 
     private void Update()
     {
-        FirstWayShoot();
+        NullWayShoot();
     }
 
-    private void FirstWayShoot()
+    private void NullWayShoot()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);       
-    }    
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
 
-    private void OnCollisionEnter (Collision other)
+    //столкновение снаряда
+    private void OnCollisionEnter(Collision other)
+    {
+        StartCoroutine(projectile_action());
+    }
+
+    //последовательность действий при столкновении снаряда
+    private IEnumerator projectile_action()
     {
         speed = 0;
-        // Destroy(gameObject);
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 }
