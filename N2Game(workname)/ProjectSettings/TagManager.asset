@@ -10,6 +10,8 @@ TagManager:
   - Indicator_0
   - Indicator_1
   - Joystick_BG
+  - Skeleton
+  - Kub
   layers:
   - Default
   - TransparentFX

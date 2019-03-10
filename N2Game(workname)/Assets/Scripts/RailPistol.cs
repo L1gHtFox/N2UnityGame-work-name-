@@ -16,6 +16,7 @@ public class RailPistol : MonoBehaviour {
 	public Text ammoInMagazineText; 
 	public Text allAmmoText;
 
+
 	public ParticleSystem muzzleFlash;
 	public GameObject impactEffect;
 
@@ -25,7 +26,6 @@ public class RailPistol : MonoBehaviour {
     {
 		ammoInMagazineText = GameObject.Find ("AmmoInMagazine_1").GetComponent<Text>();
 		allAmmoText = GameObject.Find("Full_Ammo_1").GetComponent<Text>();
-
 		ammoInMagazineText.text = currentAmmo.ToString();
 		allAmmoText.text = allAmmo.ToString();
 	}
@@ -51,16 +51,14 @@ public class RailPistol : MonoBehaviour {
 		if (Physics.Raycast (fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) {
 			Debug.Log (hit.transform.name);
 
-			Target target = hit.transform.GetComponent<Target> ();
-			if (target != null) {
-				target.TakeDamage (damage);
-			}
+            EnemyAI ehp = hit.collider.GetComponent<EnemyAI>();           
+            if (ehp != null)
+            {
+                
+                ehp.TakeDamageFromBullet(damage, hit.point);
+            }
 
-			if (hit.rigidbody != null) {
-				hit.rigidbody.AddForce (-hit.normal * impactForse);
-			}
-
-			GameObject impactGO = Instantiate (impactEffect, hit.point, Quaternion.LookRotation (hit.normal));
+            GameObject impactGO = Instantiate (impactEffect, hit.point, Quaternion.LookRotation (hit.normal));
 			Destroy (impactGO, 2f);
 		}
 	}

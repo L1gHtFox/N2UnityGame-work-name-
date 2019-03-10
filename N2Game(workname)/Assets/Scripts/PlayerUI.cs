@@ -7,10 +7,11 @@ public class PlayerUI : MonoBehaviour {
 	public Slider HpSlider;
 	public Slider N2Slider;
 
-	public float currentHealth = 100;
+	public float currentHealth = 100f;
 
-	private float maxHealth = 100;
-	private float minHealth = 0;
+	private float maxHealth = 100f;
+	private float minHealth = 0f;
+    private bool alive = true;
 
 	public float currentN2 = 100;
 
@@ -18,35 +19,43 @@ public class PlayerUI : MonoBehaviour {
 
 	public float time = 1f;
 
+
 	void Star(){
 		StartCoroutine(MinusN2(20));
 	}
 
 	void Update(){
-
+        HpSlider.value = currentHealth;
 		N2Slider.value = currentN2;
 
 		if (currentN2 <= minN2) {
 			PlayerDamage (20);
 		}
 
-		if (Input.GetKeyDown (KeyCode.E)) {
-			PlayerDamage (10);
-		}
-		if(Input.GetKeyDown(KeyCode.R)){
-			PlayerHealing(10);
-		}
 	}
 
-	public void PlayerDamage (float damage){
-		currentHealth -= damage;
+	public void PlayerDamage (float amount){
+		currentHealth -= amount;
 		HpSlider.value = currentHealth;
-		if (currentHealth < 0) {
+		if (currentHealth <= 0) {
 			currentHealth = minHealth;
+            alive = false;
+            gameObject.SetActive(false);
 		}
 	}
+    public void PlayerDamageFromBullet(float amount, Vector3 hitPoint)
+    {
+        currentHealth -= amount;
+        HpSlider.value = currentHealth;
+        if (currentHealth <= 0)
+        {
+            currentHealth = minHealth;
+            alive = false;
+            gameObject.SetActive(false);
+        }
+    }
 
-	public void PlayerHealing(float healing){
+    public void PlayerHealing(float healing){
 
 		currentHealth += healing;
 		HpSlider.value = currentHealth;
