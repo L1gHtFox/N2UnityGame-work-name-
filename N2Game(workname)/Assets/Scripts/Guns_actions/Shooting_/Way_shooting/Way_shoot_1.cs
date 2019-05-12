@@ -40,7 +40,7 @@ public class Way_shoot_1 : MonoBehaviour
 
 
     private void Update()
-    {       
+    {
         if (reload == false)
         {
             MagazineText.text = currentAmmo.ToString(); //вывод кол - ва патрон в обойме на экран
