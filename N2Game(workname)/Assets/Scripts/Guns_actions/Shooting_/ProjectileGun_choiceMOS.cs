@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 
-public class Сheck_indicators : MonoBehaviour
+public class ProjectileGun_choiceMOS : MonoBehaviour
 {
-    //индикаторы методов
-    private GameObject Indic_0;
-    private GameObject Indic_1;
+    //скрипты методов стрельбы
+    private ProjectileGun_MOS_0 MOS_0;
+    private ProjectileGun_MOS_1 MOS_1;
 
     //значения методов стрельбы
     private int _value_Shoot; //значение текущего выбранного метода стрельбы
@@ -17,32 +14,39 @@ public class Сheck_indicators : MonoBehaviour
 
 
     private void Start()
-    {       
-        //поиск индикаторов
-        Indic_0 = GameObject.Find("Indicator_0");
-        Indic_1 = GameObject.Find("Indicator_1");       
-    }
-
+    {
+        //поиск скриптов с методами стрельбы
+        MOS_0 = GetComponent<ProjectileGun_MOS_0>();
+        MOS_1 = GetComponent<ProjectileGun_MOS_1>();       
+    }    
 
     private void Update()
     {
-        choose_MOS();
+        choice_of_MOS(); //MOS - метод стрельбы
+    }
+
+    //определение значения текущего метода стрельбы
+    public void Choice_of_MOS_OnButton()
+    {
+        current_MOS += 1;
+        if (current_MOS > total_MOS) current_MOS = 0;
     }
 
     //выбор метода стрельбы
-    private void choose_MOS()
+    private void choice_of_MOS()
     {
         switch (value_MOS())
         {
             case 0:
-                Indic_1.SetActive(false);
-                Indic_0.SetActive(true);
+                MOS_0.enabled = true;
+                MOS_1.enabled = false;
 
                 break;
 
             case 1:
-                Indic_0.SetActive(false);
-                Indic_1.SetActive(true);
+                MOS_0.enabled = false;
+                MOS_1.enabled = true;
+
                 break;
         }
     }

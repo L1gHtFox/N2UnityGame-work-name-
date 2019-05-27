@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Method_of_shoot_1 : MonoBehaviour
+public class Method_of_shootingProjectileGun_0 : MonoBehaviour
 {
     //скорость полета снаряда
-    public float speed = 25;
-    public float time = 0;
+    public float speed = 80;
 
     private void Update()
     {
-        FirstWayShoot();
+        NullWayShoot();
     }
 
-    private void FirstWayShoot()
+    private void NullWayShoot()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);             
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
-    
+
     //столкновение снаряда
-    private void OnCollisionEnter (Collision other)
+    private void OnCollisionEnter(Collision other)
     {
         StartCoroutine(projectile_action());
     }

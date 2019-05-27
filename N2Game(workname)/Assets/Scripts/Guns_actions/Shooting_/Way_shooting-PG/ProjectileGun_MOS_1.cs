@@ -1,9 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class Way_shoot_0 : MonoBehaviour
+public class ProjectileGun_MOS_1 : MonoBehaviour
 {
     //значения, которые требуют ссылки
     private GameObject _prefabProjectile; //ссылка на сняряд
@@ -11,17 +11,17 @@ public class Way_shoot_0 : MonoBehaviour
     public GameObject _camera;
 
     //значения патрон
-    public int fullAmmo = 60; //максимальный запас патрон
-    public int defltAmmoMag = 20; //стандартный запас патрон в обойме
-    public int currentAmmo = 20; //текущий запас патрон в обойме
+    public int fullAmmo = 180; //максимальный запас патрон
+    public int currentAmmo = 30; //текущий запас патрон в обойме
+    public int defltAmmoMag = 30; //стандартный запас патрон в обойме
     public int takeAmmo = 0; //патроны, которые герой собирается применить
 
     //проверка на перезарядку
     private bool reload = false;
 
     //текстовые объекты
-    public Text MagazineText; //текст кол - во патрон в обойме
-    public Text fullAmmoText; //текст макс. кол - во патрон
+    public Text UseEnergyText; //текст кол - во патрон в обойме
+    public Text MainBankText; //текст макс. кол - во патрон
 
     private void Start()
     {
@@ -29,22 +29,22 @@ public class Way_shoot_0 : MonoBehaviour
         _camera = GameObject.Find("Main Camera");
 
         //ссылка на текст, показывающий макс. кол - во патрон
-        fullAmmoText = GameObject.Find("Full_Ammo_2").GetComponent<Text>();
+        MainBankText = GameObject.Find("Main_bank").GetComponent<Text>();
 
         //ссыклка на текст, показывающий кол - во патрон в обойме
-        MagazineText = GameObject.Find("AmmoInMagazine_2").GetComponent<Text>();
+        UseEnergyText = GameObject.Find("Use_energy").GetComponent<Text>();
 
         //достаем сняряд из папки resources
-        _prefabProjectile = Resources.Load("Prefubs/Gun_two/projectile_M0") as GameObject;
+        _prefabProjectile = Resources.Load("Prefubs/Gun_two/projectile_M1") as GameObject;        
     }
 
 
     private void Update()
     {
-        if (reload == false)
+        if (!reload)
         {
-            MagazineText.text = currentAmmo.ToString(); //вывод кол - ва патрон в обойме на экран
-            fullAmmoText.text = fullAmmo.ToString(); //вывод макс. кол - ва патрон на экран
+            UseEnergyText.text = currentAmmo.ToString(); //вывод кол - ва патрон в обойме на экран
+            MainBankText.text = fullAmmo.ToString(); //вывод макс. кол - ва патрон на экран
         }
 
         true_of_Shoot();
@@ -53,11 +53,11 @@ public class Way_shoot_0 : MonoBehaviour
     //проверка истины стрельбы
     private void true_of_Shoot()
     {
-        if (reload == false && Input.GetButtonDown("Fire1") && currentAmmo > 0)
+        if (!reload && Input.GetButton("Fire1") && currentAmmo > 0)
             Shoot();
         else if (Input.GetButtonDown("Reloading") || currentAmmo == 0)
-            if (reload == false)
-                StartCoroutine(enum_reload());
+            if (!reload)
+                StartCoroutine(enum_reload());          
     }
 
     //выстрел
@@ -71,7 +71,7 @@ public class Way_shoot_0 : MonoBehaviour
         projectile.transform.rotation = _camera.transform.rotation;
 
         currentAmmo -= 1;
-        MagazineText.text = currentAmmo.ToString();
+        UseEnergyText.text = currentAmmo.ToString();
     }
 
     //последовательность действий при перезарядки
@@ -79,24 +79,24 @@ public class Way_shoot_0 : MonoBehaviour
     {
         if (fullAmmo != 0)
         {
-            MagazineText.text = "Reloading";
+            UseEnergyText.text = "Reloading";
             reload = true; //сообщаем о том что оружие на перезарядке
         }
         else
-            MagazineText.text = "No_ammo";
+            UseEnergyText.text = "No_ammo";
 
         //ждем "завершения" перезарядки
         yield return new WaitForSeconds(1.9f);
-        Reloading();
+        Reloading();          
     }
 
     //перезарядка оружия
     private void Reloading()
-    {
+    {        
         takeAmmo = defltAmmoMag - currentAmmo;
 
         if (fullAmmo >= takeAmmo)
-        {
+        {            
             fullAmmo -= takeAmmo;
             currentAmmo = defltAmmoMag;
         }

@@ -1,19 +1,13 @@
 ﻿using UnityEngine;
 
 
-public class Change_guns : MonoBehaviour
+public class Change_gun : MonoBehaviour
 {
     //объекты "Gun_..." и их патроны
     public GameObject Gun_null;
-    public GameObject Canvas0;
-
     public GameObject Gun_one;
-    public GameObject Canvas1;
-
     public GameObject Gun_two;
-    public GameObject Canvas2;
 
-    public bool F = false;
 
     //значения оружий
     public int scrollInt = 0; //текущее оружие
@@ -24,66 +18,45 @@ public class Change_guns : MonoBehaviour
         Gun_null = GameObject.Find("Gun_null");
         Gun_one = GameObject.Find("Gun_one");
         Gun_two = GameObject.Find("Gun_two");
-
-        Canvas0 = GameObject.Find("Canvas_0");
-        Canvas1 = GameObject.Find("Canvas_1");
-        Canvas2 = GameObject.Find("Canvas_2");
     }
 
-    //метод, проверяющий нажатие кнопки
-    void OnMouseDown()
+    private void Update()
     {
-        F = true;
+        Change();
     }
+
 
     //метод, проверяющий отжатие кнопки
-    void OnMouseUp()
+    public void ChangeGun_OnButton()
     {
         scrollInt += 1;
         if (scrollInt > maxGuns) scrollInt = 1;
     }
 
-    private void Update()
-    {
-        Change_gun();
-    }
-
     //смена оружия
-    public void Change_gun()
+    public void Change()
     {
         switch (Value_gun())
         {
             case 0:
                 Gun_null.SetActive(true);
-                Canvas0.SetActive(true);
-
                 Gun_one.SetActive(false);
-                Canvas1.SetActive(false);
-
                 Gun_two.SetActive(false);
-                Canvas2.SetActive(false);
+
                 break;
 
             case 1:
                 Gun_null.SetActive(false);
-                Canvas0.SetActive(false);
-
                 Gun_one.SetActive(true);
-                Canvas1.SetActive(true);
-
                 Gun_two.SetActive(false);
-                Canvas2.SetActive(false);
+
                 break;
 
             case 2:
                 Gun_null.SetActive(false);
-                Canvas0.SetActive(false);
-
                 Gun_one.SetActive(false);
-                Canvas1.SetActive(false);
-
                 Gun_two.SetActive(true);
-                Canvas2.SetActive(true);
+
                 break;
         }
     }
