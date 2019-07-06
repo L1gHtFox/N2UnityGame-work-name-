@@ -3,34 +3,34 @@ using UnityEngine.EventSystems;
 
 public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [HideInInspector]
-    public Vector2 TouchDist;
+    private Mobile_cameraRotation mob;
 
-    [HideInInspector]
-    public Vector2 PointerOld;
 
-    [HideInInspector]
-    protected int PointerId;
-
-    [HideInInspector]
-    public bool Pressed;
+    [HideInInspector] public Vector2 TouchDist;
+    [HideInInspector] public Vector2 PointerOld;
+    [HideInInspector] protected int PointerId;
+    [HideInInspector] public bool Pressed;
 
     //координаты свайпов
     public float vectorX;
     public float vectorY;
 
+    //выход за рамки
+    public float extra;
 
     private void Start()
     {
-
+        mob = GameObject.Find("Head_PC").GetComponent<Mobile_cameraRotation>();
     }
 
 
     private void Update()
-    {
-        coordinateX();
-        coordinateY();
+    {        
+        CheckCoorinate();
+    }
 
+    private void CheckCoorinate()
+    {
         if (Pressed)
         {
             if (PointerId >= 0 && PointerId < Input.touches.Length)
@@ -48,17 +48,52 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         {
             TouchDist = new Vector2();
         }
+
+        coordinateX();
+        coordinateY();
     }
 
     public float coordinateX()
     {
         vectorX = TouchDist.x;
+        if (mob.frameRotX == true)
+        {
+            if (mob._rotationX > mob.maxRotY)
+            {
+                extra = mob._rotationX - mob.maxRotY;
+                if (extra > 0.000001f)
+                    vectorX -= extra;
+            }
+            else if (mob._rotationX < mob.minRotY)
+            {
+                extra = mob._rotationX - mob.minRotY;
+                if (extra < -0.000001f)
+                    vectorX -= extra;
+            }
+        }        
+
         return vectorX;
     }
 
     public float coordinateY()
     {
         vectorY = TouchDist.y;
+        if (mob.frameRotY == true)
+        {
+            if (mob._rotationY > mob.maxRotX)
+            {
+                extra = mob._rotationY - mob.maxRotX;
+                if (extra > 0.000001f)
+                    vectorY -= extra;
+            }
+            else if (mob._rotationY < mob.minRotX)
+            {
+                extra = mob._rotationY - mob.minRotX;
+                if (extra < -0.000001f)
+                    vectorY -= extra;
+            }
+        }        
+
         return vectorY;
     }
 

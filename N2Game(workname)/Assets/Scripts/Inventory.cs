@@ -17,8 +17,8 @@ public class Inventory : MonoBehaviour {
 	public GameObject database;
 
 	public FPSInput fpsi;
-	public MouseLook playerLook;
-	public MouseLook camLook;
+	public PC_mouseLook playerLook;
+	public PC_mouseLook camLook;
 	public RayShooter rayShooter;
 
 	void Start () {

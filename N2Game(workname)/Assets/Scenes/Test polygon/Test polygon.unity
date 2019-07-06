@@ -18871,6 +18871,7 @@ MonoBehaviour:
   Pressed: 0
   vectorX: 0
   vectorY: 0
+  extra: 0
 --- !u!43 &2017191502
 Mesh:
   m_ObjectHideFlags: 0
@@ -19298,31 +19299,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761504629687775935, guid: 6ddbe889c34338340a63d747f7fc436b,
-        type: 3}
-      propertyPath: m_Name
-      value: Head_PC
-      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Animations.Array.size
       value: 2
@@ -19359,6 +19335,18 @@ PrefabInstance:
       propertyPath: N2Slider
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: vector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 367045233, guid: 6ddbe889c34338340a63d747f7fc436b, type: 3}
       propertyPath: m_Name
       value: PlayerCharecter
@@ -19372,6 +19360,41 @@ PrefabInstance:
         type: 3}
       propertyPath: projGunActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758860774404522991, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761504629687775935, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: m_Name
+      value: Head_PC
       objectReference: {fileID: 0}
     - target: {fileID: 4511638995958944883, guid: 6ddbe889c34338340a63d747f7fc436b,
         type: 3}
@@ -19661,11 +19684,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7751229259820404752, guid: 6ddbe889c34338340a63d747f7fc436b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6410117957898866271, guid: 6ddbe889c34338340a63d747f7fc436b,
         type: 3}
       propertyPath: m_ApplyRootMotion
@@ -19713,7 +19731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1829905499, guid: 6ddbe889c34338340a63d747f7fc436b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6026035
+      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 1829905499, guid: 6ddbe889c34338340a63d747f7fc436b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19749,27 +19767,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 955930005495282299, guid: 6ddbe889c34338340a63d747f7fc436b,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 955930005495282299, guid: 6ddbe889c34338340a63d747f7fc436b,
-        type: 3}
       propertyPath: vector
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 955930005495282299, guid: 6ddbe889c34338340a63d747f7fc436b,
         type: 3}
-      propertyPath: sensivityCamera
-      value: 24
+      propertyPath: maxVert
+      value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 6215342040773181209, guid: 6ddbe889c34338340a63d747f7fc436b,
+    - target: {fileID: 955930005495282299, guid: 6ddbe889c34338340a63d747f7fc436b,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: minVert
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 955930005495282299, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: maxRotX
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 955930005495282299, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: minRotX
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253038571141969854, guid: 6ddbe889c34338340a63d747f7fc436b,
+        type: 3}
+      propertyPath: rotation
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6215342040773181209, guid: 6ddbe889c34338340a63d747f7fc436b,
+    - target: {fileID: 865470141467999558, guid: 6ddbe889c34338340a63d747f7fc436b,
         type: 3}
-      propertyPath: vector
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

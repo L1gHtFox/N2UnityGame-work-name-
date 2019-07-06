@@ -7,8 +7,8 @@ public class TriggerLevel : MonoBehaviour {
 	public GameObject panel;
 	public int levelCount;
 	public FPSInput fpsi;
-	public MouseLook playerLook;
-	public MouseLook camLook;
+	public PC_mouseLook playerLook;
+	public PC_mouseLook camLook;
 	public RayShooter rayShooter;
 
 	void OnTriggerEnter (Collider col) {

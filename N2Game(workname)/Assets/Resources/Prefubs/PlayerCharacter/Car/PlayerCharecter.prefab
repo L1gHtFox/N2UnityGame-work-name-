@@ -441,7 +441,8 @@ GameObject:
   - component: {fileID: 367045237}
   - component: {fileID: 367045236}
   - component: {fileID: 367045240}
-  - component: {fileID: 6215342040773181209}
+  - component: {fileID: 4253038571141969854}
+  - component: {fileID: 6626778243694634767}
   - component: {fileID: 9202914191083666515}
   m_Layer: 0
   m_Name: PlayerCharecter
@@ -560,7 +561,7 @@ MonoBehaviour:
   acceleration: 4
   jForce: 9
   gravityForce: 0
---- !u!114 &6215342040773181209
+--- !u!114 &4253038571141969854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -572,8 +573,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a699ccbc28da740a6d61b74b8ef025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  T: 0
-  vector: 1
+  maxRotX: 50
+  minRotX: -55
+  maxRotY: 50
+  minRotY: -50
+  frameRotX: 0
+  frameRotY: 0
+  _rotationX: 0
+  _rotationY: 0
+  rotation: 1
+--- !u!114 &6626778243694634767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367045233}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b84c5db12ef354abfe7622313ffcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotX: 50
+  minRotX: -55
+  maxRotY: 50
+  minRotY: -50
+  frameRotX: 0
+  frameRotY: 0
+  _rotationX: 0
+  _rotationY: 0
+  rotation: 0
 --- !u!114 &9202914191083666515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,7 +615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7193e27ca1f1ddb48a5f57c8982c04fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projGunActive: 0
   Gun_null: {fileID: 0}
   Gun_one: {fileID: 0}
   Gun_two: {fileID: 0}
@@ -850,7 +878,6 @@ GameObject:
   - component: {fileID: 933783343}
   - component: {fileID: 933783342}
   - component: {fileID: 933783341}
-  - component: {fileID: 7751229259820404752}
   - component: {fileID: 9120876305398520855}
   - component: {fileID: 7808156289061188083}
   m_Layer: 0
@@ -936,25 +963,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &7751229259820404752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 933783338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7f62eacc0a5a54d8a7aaedc1d53531, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
-  fullAmmo: 180
-  currentAmmo: 30
-  defltAmmoMag: 30
-  takeAmmo: 0
-  UseEnergyText: {fileID: 0}
-  MainBankText: {fileID: 0}
 --- !u!95 &9120876305398520855
 Animator:
   serializedVersion: 3
@@ -1396,7 +1404,7 @@ GameObject:
   - component: {fileID: 6015130528892855981}
   - component: {fileID: 4285693145040505605}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1487,6 +1495,7 @@ GameObject:
   - component: {fileID: 8710757498947654723}
   - component: {fileID: 7853662570390941706}
   - component: {fileID: 955930005495282299}
+  - component: {fileID: 865470141467999558}
   m_Layer: 0
   m_Name: HeadPC
   m_TagString: Untagged
@@ -1579,8 +1588,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a699ccbc28da740a6d61b74b8ef025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  T: 0
-  vector: 0
+  maxRotX: 50
+  minRotX: -55
+  maxRotY: 50
+  minRotY: -50
+  frameRotX: 0
+  frameRotY: 0
+  _rotationX: 0
+  _rotationY: 0
+  rotation: 0
+--- !u!114 &865470141467999558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761504629687775935}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b84c5db12ef354abfe7622313ffcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotX: 50
+  minRotX: -55
+  maxRotY: 50
+  minRotY: -50
+  frameRotX: 0
+  frameRotY: 0
+  _rotationX: 0
+  _rotationY: 0
+  rotation: 1
 --- !u!1 &8079716879058565034
 GameObject:
   m_ObjectHideFlags: 0
