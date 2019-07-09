@@ -4,8 +4,8 @@
 public class ProjectileGun_choiceMOS : MonoBehaviour
 {
     //скрипты методов стрельбы
-    private ProjectileGun_MOS_0 MOS_0;
-    private ProjectileGun_MOS_1 MOS_1;
+    //private ProjectileGun_MOS_0 MOS_0;
+    //private ProjectileGun_MOS_1 MOS_1;
 
     //значения методов стрельбы
     private int _value_Shoot; //значение текущего выбранного метода стрельбы
@@ -16,8 +16,8 @@ public class ProjectileGun_choiceMOS : MonoBehaviour
     private void Start()
     {
         //поиск скриптов с методами стрельбы
-        MOS_0 = GetComponent<ProjectileGun_MOS_0>();
-        MOS_1 = GetComponent<ProjectileGun_MOS_1>();       
+        //MOS_0 = GetComponent<ProjectileGun_MOS_0>();
+        //MOS_1 = GetComponent<ProjectileGun_MOS_1>();       
     }    
 
     private void Update()
@@ -38,14 +38,14 @@ public class ProjectileGun_choiceMOS : MonoBehaviour
         switch (value_MOS())
         {
             case 0:
-                MOS_0.enabled = true;
-                MOS_1.enabled = false;
+                //MOS_0.enabled = true;
+                //MOS_1.enabled = false;
 
                 break;
 
             case 1:
-                MOS_0.enabled = false;
-                MOS_1.enabled = true;
+                //MOS_0.enabled = false;
+                //MOS_1.enabled = true;
 
                 break;
         }

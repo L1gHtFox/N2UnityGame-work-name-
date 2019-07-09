@@ -7,11 +7,12 @@ TagManager:
   - N2wall
   - InventoryManager
   - HpSliderBar
-  - Indicator_0
-  - Indicator_1
   - Joystick_BG
   - Skeleton
   - Kub
+  - aim
+  - ProjGun
+  - EnergyBank
   layers:
   - Default
   - TransparentFX

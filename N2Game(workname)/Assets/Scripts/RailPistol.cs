@@ -24,7 +24,7 @@ public class RailPistol : MonoBehaviour {
 
 	void Start()
     {
-		ammoInMagazineText = GameObject.Find ("AmmoInMagazine_1").GetComponent<Text>();
+		ammoInMagazineText = GameObject.Find("AmmoInMagazine_1").GetComponent<Text>();
 		allAmmoText = GameObject.Find("Full_Ammo_1").GetComponent<Text>();
 		ammoInMagazineText.text = currentAmmo.ToString();
 		allAmmoText.text = allAmmo.ToString();
