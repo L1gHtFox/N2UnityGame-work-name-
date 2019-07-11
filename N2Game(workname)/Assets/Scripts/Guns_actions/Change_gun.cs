@@ -15,9 +15,9 @@ public class Change_gun : MonoBehaviour
 
     private void Start()
     {
-        Gun_null = GameObject.Find("Gun_null");
-        Gun_one = GameObject.Find("Gun_one");
-        Gun_two = GameObject.Find("Gun_two");
+        //Gun_null = GameObject.Find("Gun_null");
+        //Gun_one = GameObject.Find("Gun_one");
+        //Gun_two = GameObject.Find("ProjGun");
     }
 
     private void Update()
@@ -26,10 +26,10 @@ public class Change_gun : MonoBehaviour
     }
 
 
-    //метод, проверяющий отжатие кнопки
+    //метод, проверяющий отжатие кнопки (для телефона)
     public void ChangeGun_OnButton()
     {
-        scrollInt += 1;
+        scrollInt++;
         if (scrollInt > maxGuns) scrollInt = 1;
     }
 
@@ -64,8 +64,8 @@ public class Change_gun : MonoBehaviour
     //значение текущего оружия
     public int Value_gun()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0) scrollInt += 1;
-        if (Input.GetAxis("Mouse ScrollWheel") < 0) scrollInt -= 1;
+        if (Input.GetAxis("Mouse ScrollWheel") > 0) scrollInt++;
+        if (Input.GetAxis("Mouse ScrollWheel") < 0) scrollInt--;
 
         if (scrollInt > maxGuns) scrollInt = 0;
         if (scrollInt < 0) scrollInt = 2;

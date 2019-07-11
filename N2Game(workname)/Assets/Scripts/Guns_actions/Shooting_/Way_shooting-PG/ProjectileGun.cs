@@ -4,19 +4,20 @@ using UnityEngine.UI;
 
 public class ProjectileGun : MonoBehaviour
 {
+    //параметры энергии орудия
+    public static int energyFull = 32; //макс. запас энергии
+    public static int energyFullCurrent = energyFull; //оставшаяся энергия
+    public static int energyClip = 4; //макс. запас энергии в обойме
+    public static int energyClipCurrent = energyClip; //оставшаяся энергия в обойме
+
     //ссылка на скрипт
     private EnergyBank Bank;
 
     //объекты
     private Animator anim;
+    private GameObject ProjGun;
     private GameObject MainCamera;
-
-    //индекс оружия в инвентаре
-    public int indexWeapon = 1;
-
-    //переменные энергии
-    public float oneShot;
-    
+        
     //переменные снаряда
     private GameObject projectile;
     private GameObject square;
@@ -25,15 +26,13 @@ public class ProjectileGun : MonoBehaviour
     public Text mainBankText; //текст макс. кол - во патрон
     public Text currentEnergyText; //текст кол - во патрон в обойме
 
-    //преобразование
-    private bool Transform = true;
-
 
     private void Start()
     {
-        //ссылки на игровые объекты
-        MainCamera = GameObject.FindWithTag("MainCamera");        
+        //ссылки на игровые объекты        
         anim = GetComponent<Animator>();
+        ProjGun = GameObject.Find("Gun_two").GetComponent<GameObject>();
+        MainCamera = GameObject.FindWithTag("MainCamera");
 
         //находим префабы:
         square = Resources.Load("Prefubs/Gun_two/projectile_M0") as GameObject;
@@ -53,26 +52,33 @@ public class ProjectileGun : MonoBehaviour
 
     private void ManagementProjGun()
     {
-        if (Transform)
+        InformOfEnergy();                
+    }
+
+    private void InformOfEnergy()
+    {
+        if (!Bank.reload)
         {
-            Bank.transform(oneShot, indexWeapon);
-            Transform = false;
+            EnergyBank.energyFull = energyFull;
+            EnergyBank.energyFullCurrent = energyFullCurrent;
+            EnergyBank.energyClip = energyClip;
+            EnergyBank.energyClipCurrent = energyClipCurrent;
         }
-
-
-        if (Bank.currentEnergy == 0 && Bank.energyFull != 0)
-            reloading();
+        else
+        {
+            energyFullCurrent = EnergyBank.energyFullCurrent;
+            energyClipCurrent = EnergyBank.energyClipCurrent;
+            Bank.reloading(false);
+        }
+        if (energyClipCurrent == 0 && energyFullCurrent != 0) reloading();
     }
 
     public void reloading()
     {
         if (!anim.GetBool("boolReloading") && !anim.GetBool("boolShooting")
-            && gameObject.active && Bank.currentEnergy != Bank.energyMagazin)
+            && gameObject.active && energyClipCurrent != energyClip)
         {            
             anim.SetBool("boolReloading", true);
-
-            if (!anim.GetBool("boolReloading"))
-                Bank.reloading(true);
         }
     }
 
@@ -81,13 +87,13 @@ public class ProjectileGun : MonoBehaviour
         if (!anim.GetBool("boolReloading") && !anim.GetBool("boolShooting")
             && gameObject.active)
         {
-            if (Bank.currentEnergy != 0)
+            if (energyClipCurrent != 0)
             {
                 anim.SetBool("boolShooting", true);
                 CreateProj();
-                Bank.shooting(true);
+                energyClipCurrent--;
             }
-            else if (Bank.energyFull != 0)
+            else if (energyFull != 0)
                 reloading();
         }
     }
@@ -98,10 +104,10 @@ public class ProjectileGun : MonoBehaviour
         projectile = Instantiate(square);
 
         //размещаем префаб в точке:
-        projectile.transform.position = MainCamera.transform.TransformPoint(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 1.3f);
+        projectile.transform.position = MainCamera.transform.TransformPoint(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + 1.2f);
 
         //направляем префаб
-        projectile.transform.rotation = MainCamera.transform.rotation;        
+        projectile.transform.localRotation = MainCamera.transform.rotation;        
     }
 
     private void AnimationControll()

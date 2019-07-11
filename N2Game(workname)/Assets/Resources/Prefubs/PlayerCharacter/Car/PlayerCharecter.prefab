@@ -994,8 +994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df67bf7999680d45ae16ecb0489cfac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullEnergy: 360
-  currentEnergy: 0
+  Transform: 1
+  indexWeapon: 1
+  oneShot: 0
   mainBankText: {fileID: 0}
   currentEnergyText: {fileID: 0}
 --- !u!1 &1395386659
@@ -1723,10 +1724,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c99e2de6792f942910eb8f8f704c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullEnergyBank: 360
-  energyInMagazin: 0
-  UseEnergyText: {fileID: 0}
-  MainBankText: {fileID: 0}
+  EnergyFull_main: 0
+  EnergyMagazin_main: 0
+  EnergyFull_dop: 0
+  EnergyMagazin_dop: 0
+  prevWeapon: 0
+  PrevOneshotMain: 0
+  PrevOneshotDop: 0
+  energyFull: 0
+  energyMagazin: 0
+  currentEnergy: 0
+  One: 1
+  Zero: 1
+  mainBankText: {fileID: 0}
+  currentEnergyText: {fileID: 0}
 --- !u!1001 &8353431672902036384
 PrefabInstance:
   m_ObjectHideFlags: 0

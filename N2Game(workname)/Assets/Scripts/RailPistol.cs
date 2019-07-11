@@ -1,79 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class RailPistol : MonoBehaviour {
+public class RailPistol : MonoBehaviour
+{
+    //ссылка на скрипт
+    private EnergyBank Bank;
 
-	public float damage = 10f;
-	public float range = 100f;
-	public float impactForse = 30f;
+    //параметры энергии орудия
+    public static int energyFull = 35; //макс. запас энергии
+    public static int energyFullCurrent = energyFull; //оставшаяся энергия
+    public static int energyClip = 7; //макс. запас энергии в обойме
+    public static int energyClipCurrent = energyClip; //оставшаяся энергия в обойме
 
-	public float allAmmo = 180f;
-	public float ammo = 30f;
-	public float takeAmmo = 0f;
-	public float currentAmmo = 30f;
-	public Text ammoInMagazineText; 
-	public Text allAmmoText;
-
-
-	public ParticleSystem muzzleFlash;
-	public GameObject impactEffect;
-
-	public Camera fpsCam;
-
-	void Start()
+    private void Start()
     {
-		ammoInMagazineText = GameObject.Find("AmmoInMagazine_1").GetComponent<Text>();
-		allAmmoText = GameObject.Find("Full_Ammo_1").GetComponent<Text>();
-		ammoInMagazineText.text = currentAmmo.ToString();
-		allAmmoText.text = allAmmo.ToString();
-	}
+        //ссылки на скрипты
+        Bank = GameObject.Find("EnergyBank").GetComponent<EnergyBank>();
+    }
 
-	public void Update ()
+    private void Update()
     {
-		if (Input.GetButtonDown ("Fire1") && currentAmmo > 0) {
-			currentAmmo -= 1f;
-			ammoInMagazineText.text = currentAmmo.ToString ();
-			Shoot ();
-		}
+        ManagementPistol();
+    }
 
-		if((Input.GetButtonDown("Fire1") && currentAmmo <= 0) | (Input.GetKeyDown(KeyCode.R))){
-			StartCoroutine(Reloading());
-		}
-	}
-
-	private void Shoot()
+    private void ManagementPistol()
     {
-		muzzleFlash.Play();
-		RaycastHit hit;
+        InformOfEnergy();
+    }
 
-		if (Physics.Raycast (fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) {
-			Debug.Log (hit.transform.name);
-
-            EnemyAI ehp = hit.collider.GetComponent<EnemyAI>();           
-            if (ehp != null)
-            {
-                
-                ehp.TakeDamageFromBullet(damage, hit.point);
-            }
-
-            GameObject impactGO = Instantiate (impactEffect, hit.point, Quaternion.LookRotation (hit.normal));
-			Destroy (impactGO, 2f);
-		}
-	}
-
-	IEnumerator Reloading()
+    private void InformOfEnergy()
     {
-	    if (allAmmo != 0)
-        {
-			ammoInMagazineText.text = "Reloading";
-			yield return new WaitForSeconds (3);
-			takeAmmo = ammo - currentAmmo;
-			allAmmo -= takeAmmo;
-			currentAmmo += takeAmmo;
-			ammoInMagazineText.text = currentAmmo.ToString ();
-			allAmmoText.text = allAmmo.ToString ();
-		}
-	}
+        EnergyBank.energyFull = energyFull;
+        EnergyBank.energyFullCurrent = energyFullCurrent;
+        EnergyBank.energyClip = energyClip;
+        EnergyBank.energyClipCurrent = energyClipCurrent;
+    }
 }

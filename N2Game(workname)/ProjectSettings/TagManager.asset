@@ -11,8 +11,8 @@ TagManager:
   - Skeleton
   - Kub
   - aim
-  - ProjGun
-  - EnergyBank
+  - Fire
+  - firearm
   layers:
   - Default
   - TransparentFX
